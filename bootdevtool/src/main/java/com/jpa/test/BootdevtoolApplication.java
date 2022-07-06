@@ -8,6 +8,7 @@ public class BootdevtoolApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BootdevtoolApplication.class, args);
+		System.out.println("helllo world");
 	}
 
 }

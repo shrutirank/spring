@@ -9,7 +9,7 @@ public class AngularSpringApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AngularSpringApplication.class, args);
 		
-		System.out.println("running............... ");
+		System.out.println("running..... ");
 	}
 
 }

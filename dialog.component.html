@@ -1,0 +1,30 @@
+
+
+<ng-container>
+  <h2 matDialogTitle>Student Marks</h2>
+  <b>Name:</b>{{data.uname}} 
+  <mat-dialog-content *ngFor="let item of data">
+    <p *ngIf="!myprop"><b>Subject:</b>{{item.subjectname}},<b>Marks:</b> {{item.marks}}
+      <button mat-stroked-button color="warn" (click)="deleteSub(item.subjectId)">Remove subject</button><br></p>
+    <p *ngIf="myprop">Nothing</p>
+
+  </mat-dialog-content>
+</ng-container>
+
+
+<!-- <ng-container *ngFor="let item of data.subAry; let i=index" >
+  <mat-form-field appearance="fill">
+    <mat-label>Subject</mat-label>
+    <input matInput name="subject{{i}}"   [(ngModel)]="item.subject">
+  </mat-form-field>&nbsp;
+  <mat-form-field appearance="fill">
+    <mat-label>Marks</mat-label>
+    <input matInput name="marks{{i}}"  [(ngModel)]="item.marks" >
+  </mat-form-field>
+</ng-container> -->
+
+<!-- <b>subject</b>:{{formsubject}}
+<b>marks</b>:{{formmarks}} -->
+
+
+

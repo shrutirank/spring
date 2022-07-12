@@ -1,0 +1,113 @@
+<div class="container col-md-6">
+<form #myform="ngForm">
+
+    <mat-form-field  appearance="fill">
+        <mat-label>Name:</mat-label>
+       <input matInput type="text" name="name"  [(ngModel)]="data.name" 
+        #name="ngModel" required pattern="[a-zA-Z][a-zA-Z ]+"  minlength="2" maxlength="10">
+        <small  style=" color: red;" *ngIf="name.touched && !name.valid">please enter your name</small><br>
+      </mat-form-field>
+      <br>
+     
+
+      <mat-form-field appearance="fill">
+        <mat-label>Address:</mat-label>
+        <textarea  matInput name="add" [(ngModel)]="data.address" 
+        #address="ngModel" minlength="5" maxlength="50"></textarea>
+        <small style=" color: red;" *ngIf="address.touched && !address.valid">enter address minlength 5</small><br>
+        </mat-form-field><br>
+   <!-- <mat-label>Gender:</mat-label>
+   <mat-radio-group aria-label="Select an option">
+    <mat-radio-button  name="gender" value="male" [(ngModel)]="data.gender">Male</mat-radio-button>
+    <mat-radio-button  name="gender" value="female"[(ngModel)]="data.gender">Female</mat-radio-button>
+</mat-radio-group><br><br> -->
+
+<mat-label>Gender:</mat-label>
+Male:<input type="radio" name="gender"  value="male"  [(ngModel)]="data.gender"  #gender="ngModel" required="">
+Feamle <input type="radio" name="gender"  value="female" [(ngModel)]="data.gender"><br>
+<small style=" color: red;" *ngIf="gender.untouched && !gender.valid">select the Gender</small><br><br>
+
+  <mat-label>Hobbie:</mat-label><br>
+  <div *ngFor="let item of checkboxJson;let i=index">
+   <mat-checkbox [(ngModel)]="item.checked" name="checkbox{{i}}">{{item.label}}</mat-checkbox>
+  </div>
+  
+
+  <mat-form-field appearance="fill">
+  <mat-label>Cars:</mat-label>
+  <mat-select name="cars" [(ngModel)]="data.cars" #cars="ngModel" required="">
+  <mat-option value="volvo">Volvo</mat-option>
+  <mat-option value="saab">Saab</mat-option>
+  <mat-option value="opel">Opel</mat-option>
+  <mat-option value="audi">Audi</mat-option>
+</mat-select>
+<small style=" color: red;" *ngIf="cars.touched && !cars.valid">selected cars</small><br>
+  </mat-form-field><br>
+
+
+
+<mat-form-field appearance="fill">
+<mat-label>Date:</mat-label>
+<input matInput type="date" name="date" [(ngModel)]="data.date" #date="ngModel" required="" ><br>
+<small style=" color: red;" *ngIf="gender.touched && !gender.valid">select  date</small><br>
+</mat-form-field><br>
+
+
+  <ng-container *ngFor="let item of data.subject; let i=index" >
+    <mat-form-field appearance="fill">
+      <mat-label>Subject</mat-label>
+      <input matInput  name="subject{{i}}" [(ngModel)]="item.subjectname" #subject="ngModel"  pattern="[a-zA-Z][a-zA-Z ]+">
+      <small style=" color: red;" *ngIf="subject.touched && !subject.valid">please enter valid subject</small>
+    </mat-form-field>&nbsp;
+    <mat-form-field appearance="fill">
+
+      <mat-label>Marks</mat-label>
+      <input matInput  name="marks{{i}}" [(ngModel)]="item.marks"  #marks="ngModel" pattern="\d|10" >
+      <small style=" color: red;" *ngIf="marks.touched && !marks.valid">please enter valid marks</small>
+    </mat-form-field> 
+  <button mat-raised-button color="warn" (click)="deletesubject(i)">Remove</button><br>
+  </ng-container>
+
+
+  <button mat-stroked-button color="primary" (click)="addsubject()">ADD Subject</button><br><br>
+
+ 
+  <mat-label>File Upload:</mat-label>
+  <input type="file" name="file" accept="images/*" (change)=" onSelectfile($event)" style="height:100%" multiple [(ngModel)]="data.file">
+<br><br>
+
+
+  <button mat-raised-button color="accent"  [disabled]="!myform.valid" (click)="sdata();openSnackBar();myform.resetForm();">Save</button>
+<button mat-raised-button color="primary" (click)="showdata()">Data</button>
+
+</form>
+</div>
+
+  <!-- <div *ngIf="dialogValue">
+   <b> subject</b>:{{dialogValue}}
+ Marks:{{dialogValue}}
+  </div> -->
+
+
+  <!-- <button mat-raised-button (click)="openDialog( -->
+
+    <!-- Add subject and Delete subject 
+  <div [formGroup]="company">
+    <ng-container formArrayName="admins">
+    <ng-container *ngFor="let admin of admins.controls;let index=index">
+      <div [formGroupName]="index">
+        <input id="subject" type="text" formControlName="subject" placeholder="subject" [(ngModel)]="data.subject">
+        <input id="marks" type="text" formControlName="marks" placeholder="Marks" [(ngModel)]="data.marks">
+        <button mat-stroked-button color="warn" (click)="deletesubject(index)"> Delete Subject</button>
+      </div>
+    </ng-container>
+    </ng-container>
+  </div>-->
+
+<!-- <h3>{{data.subAry | json}}</h3> -->
+  <!--      <button mat-stroked-button (click)="openSnackBar()">Add subject</button><br> -->
+
+     <!-- <button mat-raised-button color="warn" (click)="openDialog()">Show</button><br><br>  -->
+
+
+
